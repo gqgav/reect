@@ -1,0 +1,8 @@
+//Batching is the property of react in which if you call setstate multiple time it combines the setstate and make it 1
+The setstate is only consider which comes in the last term
+
+
+In the second term of setState if you call it then it makes a queue and add the callback function 1 by 1 and updating the prev state it takes the current state first and then update it and makes it prev
+
+
+//If you are doing a ajax call or api call then react doesn't do batching it sync the process
