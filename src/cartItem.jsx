@@ -2,16 +2,7 @@ import React from 'react';
 import './App.css';
 
 class cartItem extends React.Component{
-  constructor(){
-    super();
-    this.state = {
-      title:'Mobile',
-      price:23,
-      img:'',
-      qty:3,
-    }
-   
-  }
+ 
    increasingQty = () => {
     console.log('this',this.state)
     //SetState form 1
@@ -43,7 +34,8 @@ class cartItem extends React.Component{
     })
   }
   render(){
-    const {price,title,qty} = this.state;
+    const {price,title,qty} = this.props.product;
+    const {product,onDecrease,onIncreaseQuantity,deleteItem} = this.props;
     
     return(
 
@@ -56,9 +48,9 @@ class cartItem extends React.Component{
         <div>Rs {price}</div>
         <div>Qty:{qty}</div>
         <div className="cart-item-actions">
-          <img alt="increase" className="action-icons" src="https://cdn-icons.flaticon.com/png/512/1665/premium/1665629.png?token=exp=1635405079~hmac=5f7d56d043f0d7651b3721e158990451" onClick={this.increasingQty}/>
-          <img alt="decrease" className="action-icons" src="https://cdn-icons.flaticon.com/png/512/1665/premium/1665663.png?token=exp=1635405102~hmac=3c32ef2c8bdafb4fe7fcfa9f4f892323" onClick={this.decreasingQty} />
-          <img alt="delete" className="action-icons" src="https://cdn-icons.flaticon.com/png/512/4442/premium/4442016.png?token=exp=1635405130~hmac=a17b94d0b8b383a7054df991ea70a0bc" onClick={this.deleting}/>
+          <img alt="increase" className="action-icons" src="https://cdn-icons.flaticon.com/png/512/1665/premium/1665629.png?token=exp=1647320898~hmac=d723cd642d564e48f814133b9da639b7" onClick={()=>{onIncreaseQuantity(product)}}/>
+          <img alt="decrease" className="action-icons" src="https://cdn-icons.flaticon.com/png/512/1665/premium/1665663.png?token=exp=1647321804~hmac=e21d8e39aa5a1c5f92aba091c1eb6745" onClick={()=>{onDecrease(product)}} />
+          <img alt="delete" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/1632/1632602.png" onClick={()=>{deleteItem(product.id)}}/>
 
         </div>
         </div>
