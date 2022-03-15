@@ -1,47 +1,18 @@
 import React from 'react';
 import './App.css';
 
-class cartItem extends React.Component{
+const CartItem = (props)=> {
  
-   increasingQty = () => {
-    console.log('this',this.state)
-    //SetState form 1
-    // this.setState({
-    //   //This is known as shallow mergin means take a single value and update it on the state value
-    //   qty:this.state.qty + 1,
-    
-    // })
 
-    //Form 2
-      //If prev state required 
-    this.setState((prevState)=>{
-      return {qty:prevState.qty + 1,}
-    })
-  }
-  decreasingQty = () => {
-    const {qty} = this.state;
-    if(qty === 0){
-      return;
-    }
-    
-    this.setState((prevState)=>{
-       
-        
-          return{
-                         qty:prevState.qty - 1,
-          }
-        
-    })
-  }
-  render(){
-    const {price,title,qty} = this.props.product;
-    const {product,onDecrease,onIncreaseQuantity,deleteItem} = this.props;
+  
+    const {price,title,qty,img} =props.product;
+    const {product,onDecrease,onIncreaseQuantity,deleteItem} = props;
     
     return(
 
       <div className="cart-item">
         <div className="left-block">
-          <img style={styles.images}/>
+          <img style={styles.images} src={img}/>
         </div>
         <div className="right-block">
         <div>{title}</div>
@@ -56,7 +27,7 @@ class cartItem extends React.Component{
         </div>
       </div>
     )
-  }
+  
 }
 
 const styles = {
@@ -67,4 +38,4 @@ const styles = {
   }
 }
 
-export default cartItem;
+export default CartItem;
